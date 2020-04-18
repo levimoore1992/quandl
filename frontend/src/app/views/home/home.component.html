@@ -1,0 +1,8 @@
+<div class="main">
+  <div *ngFor="let question of questions">
+    <p>Posted By: <span class="author">{{question.author}}</span></p>
+    <h2 [routerLink]="['/question', question.slug]">{{question.content}}</h2>
+    <p>Answers: {{question.answers_count}}</p>
+    <hr>
+  </div>
+</div>
