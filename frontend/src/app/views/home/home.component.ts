@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HomeService} from './home.service';
 import {AuthService} from '../../auth/auth.service';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private service: HomeService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    if(!this.authService.isAuthenticated()){
+    if (!this.authService.isAuthenticated()) {
       this.router.navigate(['login']);
     }
     this.service.getQuestions().subscribe(res => {

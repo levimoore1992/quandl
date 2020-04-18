@@ -15,6 +15,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { HomeComponent } from './views/home/home.component';
 import { QuestionComponent } from './views/question/question.component';
 import {TokenInterceptorInterceptor} from './token-interceptor.interceptor';
+import { QuestionEditorComponent } from './views/question-editor/question-editor.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {TokenInterceptorInterceptor} from './token-interceptor.interceptor';
     RegistrationComponent,
     NavbarComponent,
     HomeComponent,
-    QuestionComponent
+    QuestionComponent,
+    QuestionEditorComponent
   ],
   imports: [
     BrowserModule,
