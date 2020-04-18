@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../auth.service';
+import{ CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-registration',
@@ -17,7 +18,8 @@ form: FormGroup;
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private cookieService: CookieService
   ) {
   }
   ngOnInit(): void {
@@ -40,7 +42,7 @@ form: FormGroup;
 
   this.authService.registerUser(body).subscribe(res => {
     // @ts-ignore
-    localStorage.setItem('token', res.token);
+    this.cookieService.set('csrftoken', res.key);
     this.router.navigate(['/']);
     });
   }

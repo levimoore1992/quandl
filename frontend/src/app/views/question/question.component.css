@@ -1,0 +1,14 @@
+.holder{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content{
+  font-style: italic;
+}
+
+.author{
+    font-family: Cochin;
+
+}

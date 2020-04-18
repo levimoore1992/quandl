@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private cookieService: CookieService
   ) {
     if (this.authService.isAuthenticated()) {
       router.navigate(['']);
@@ -38,7 +40,10 @@ export class LoginComponent implements OnInit {
   };
 
   this.authService.loginUser(body).subscribe(res => {
-    this.router.navigate(['']);
+        // @ts-ignore
+      this.cookieService.set('csrftoken', res.key);
+
+        this.router.navigate(['']);
   },
     error => {
     this.formError = 'Username or password are incorrect';

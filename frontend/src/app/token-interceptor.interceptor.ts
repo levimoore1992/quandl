@@ -23,7 +23,9 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
     const modifiedRequest = request.clone({
       headers: request.headers.set('Authorization', `Token ${this.getToken()}`)
     });
-
+    if (this.getToken() === '') {
+      return next.handle(request);
+    }
     return next.handle(modifiedRequest);
 
   }
