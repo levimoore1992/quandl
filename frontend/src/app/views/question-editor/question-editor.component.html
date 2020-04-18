@@ -1,2 +1,15 @@
 <app-navbar></app-navbar>
-<p>question-editor works!</p>
+<mat-card>
+  <mat-card-title>
+    Ask A Question
+  </mat-card-title>
+  <form [formGroup]="editorForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Question</mat-label>
+      <textarea matInput formControlName="question" required></textarea>
+      <mat-error *ngIf="error">{{error}}</mat-error>
+
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="submitForm()">Publish</button>
+  </form>
+</mat-card>
