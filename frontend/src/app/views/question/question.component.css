@@ -12,3 +12,26 @@
     font-family: Cochin;
 
 }
+
+.answers{
+  display: flex;
+  justify-content: center;
+}
+
+.answer{
+  color: green;
+}
+
+.make-answer{
+  display: flex;
+  justify-content: center;
+}
+
+mat-card{
+  width: 500px;
+}
+
+.answer-form{
+  display: flex;
+  flex-direction: column;
+}

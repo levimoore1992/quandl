@@ -6,3 +6,27 @@
     <p>{{question.created_at}}</p>
   </div>
 </div>
+<hr>
+<div class="make-answer">
+  <div *ngIf="userHasAnswered" class="answer">You have answered!!</div>
+  <div *ngIf="!userHasAnswered && showForm">
+    <mat-card>
+      <form [formGroup]="answerForm" class="answer-form">
+        <mat-form-field>
+          <mat-label>Enter Your Answer</mat-label>
+          <textarea matInput formControlName="answerBody"></textarea>
+        </mat-form-field>
+        <mat-error *ngIf="error">{{error}}</mat-error>
+        <button mat-raised-button color="primary" (click)="submitForm()">Answer</button>
+      </form>
+    </mat-card>
+  </div>
+  <div *ngIf="!userHasAnswered && !showForm">
+    <button mat-raised-button (click)="showForm = true">Answer the question</button>
+  </div>
+</div>
+
+
+<div *ngFor="let answer of answers" class="answers">
+  <app-answer [answer]="answer"></app-answer>
+</div>

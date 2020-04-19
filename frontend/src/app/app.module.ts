@@ -16,6 +16,7 @@ import { HomeComponent } from './views/home/home.component';
 import { QuestionComponent } from './views/question/question.component';
 import {TokenInterceptorInterceptor} from './token-interceptor.interceptor';
 import { QuestionEditorComponent } from './views/question-editor/question-editor.component';
+import { AnswerComponent } from './views/answer/answer.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { QuestionEditorComponent } from './views/question-editor/question-editor
     NavbarComponent,
     HomeComponent,
     QuestionComponent,
-    QuestionEditorComponent
+    QuestionEditorComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,

@@ -3,4 +3,8 @@ export interface Question {
   author: string;
   created_at: Date;
   slug: string;
+  user_has_answered: boolean
+}
+
+export class Answer {
 }

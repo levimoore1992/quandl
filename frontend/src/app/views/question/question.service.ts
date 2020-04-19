@@ -16,4 +16,13 @@ export class QuestionService {
   postQuestion(payload) {
     return this.http.post<Question>(`http://127.0.0.1:80/api/questions/`, payload);
   }
+
+  getQuestionAnswers(slug: string) {
+        return this.http.get<Question>(`http://127.0.0.1:80/api/questions/${slug}/answer/`);
+
+  }
+
+  postAnswer(slug: string, payload: { answer: any }) {
+        return this.http.post<Question>(`http://127.0.0.1:80/api/questions/${slug}/answer/`, payload);
+  }
 }
