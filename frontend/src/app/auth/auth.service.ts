@@ -20,7 +20,7 @@ export class AuthService {
     return this.http.post('http://127.0.0.1:80/api/rest-auth/registration/', body);
   }
   isAuthenticated() {
-    return !!this.cookieService.get('csrftoken');
+    return !!this.cookieService.get('token');
   }
 
   logout() {

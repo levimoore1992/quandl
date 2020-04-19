@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   this.authService.loginUser(body).subscribe(res => {
         // @ts-ignore
-      this.cookieService.set('csrftoken', res.key);
+      this.cookieService.set('token', res.key);
 
         this.router.navigate(['']);
   },

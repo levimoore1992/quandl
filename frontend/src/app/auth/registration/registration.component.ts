@@ -42,7 +42,7 @@ form: FormGroup;
 
   this.authService.registerUser(body).subscribe(res => {
     // @ts-ignore
-    this.cookieService.set('csrftoken', res.key);
+    this.cookieService.set('token', res.key);
     this.router.navigate(['/']);
     });
   }

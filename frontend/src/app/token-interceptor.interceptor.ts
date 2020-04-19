@@ -15,7 +15,7 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
   constructor( private cookieService: CookieService) {}
 
     getToken() {
-    return this.cookieService.get('csrftoken');
+    return this.cookieService.get('token');
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {

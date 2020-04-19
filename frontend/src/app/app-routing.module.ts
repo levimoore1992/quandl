@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'question/:slug', component: QuestionComponent},
-  {path: 'ask', component: QuestionEditorComponent},
+  {path: 'ask', component: QuestionEditorComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
