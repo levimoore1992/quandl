@@ -5,4 +5,9 @@
       <p>{{answer.created_at}}</p>
 
   <p>{{answer.body}}</p>
+
+  <div class="buttons" *ngIf="isAnswerAuthor()">
+    <button mat-raised-button color="primary" [routerLink]="['/edit-answer', answer.id]">Edit</button>
+    <button mat-raised-button color="warn" (click)="emitDelete()">Delete</button>
+  </div>
 </div>

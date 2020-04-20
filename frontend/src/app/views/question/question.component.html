@@ -5,7 +5,10 @@
     <p>Posted By: <span class="author">{{question.author}}</span></p>
     <p>{{question.created_at}}</p>
   </div>
-</div>
+  <div class="buttons" *ngIf="isQuestionAuthor()">
+    <button mat-raised-button color="primary" (click)="editQuestion()">Edit</button>
+    <button mat-raised-button color="warn" (click)="deleteQuestion()">Delete</button>
+  </div>
 <hr>
 <div class="make-answer">
   <div *ngIf="userHasAnswered" class="answer">You have answered!!</div>
@@ -25,8 +28,9 @@
     <button mat-raised-button (click)="showForm = true">Answer the question</button>
   </div>
 </div>
+</div>
 
 
 <div *ngFor="let answer of answers" class="answers">
-  <app-answer [answer]="answer"></app-answer>
+  <app-answer [answer]="answer" [requestUser]="requestUser" (delete)="deleteAnswer(answer)"></app-answer>
 </div>

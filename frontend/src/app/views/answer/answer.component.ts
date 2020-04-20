@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-answer',
@@ -7,9 +7,21 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AnswerComponent implements OnInit {
   @Input() answer;
+  @Input() requestUser;
+  @Output() delete: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+  isAnswerAuthor() {
+
+    return this.answer.author === this.requestUser;
+  }
+
+
+  emitDelete() {
+    this.delete.emit();
+  }
 }

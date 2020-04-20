@@ -17,12 +17,39 @@ export class QuestionService {
     return this.http.post<Question>(`http://127.0.0.1:80/api/questions/`, payload);
   }
 
-  getQuestionAnswers(slug: string) {
-        return this.http.get<Question>(`http://127.0.0.1:80/api/questions/${slug}/answer/`);
+    editQuestion(payload, slug) {
+    console.log(payload)
+        return this.http.put<Question>(`http://127.0.0.1:80/api/questions/${slug}/`, payload);
 
   }
 
-  postAnswer(slug: string, payload: { answer: any }) {
+  deleteQuestion(slug) {
+    return this.http.delete<Question>(`http://127.0.0.1:80/api/questions/${slug}/`);
+  }
+
+
+  getAnswersBySlug(slug: string) {
+        return this.http.get<Question>(`http://127.0.0.1:80/api/questions/${slug}/answers/`);
+
+  }
+
+  getAnswersById(id) {
+            return this.http.get<Question>(`http://127.0.0.1:80/api/answers/${id}/`);
+
+  }
+
+  postAnswer(slug: string, payload) {
         return this.http.post<Question>(`http://127.0.0.1:80/api/questions/${slug}/answer/`, payload);
   }
+
+    editAnswer(payload, id) {
+          return this.http.put<Question>(`http://127.0.0.1:80/api/answers/${id}/`, payload);
+
+  }
+
+  deleteAnswer(answer) {
+    return this.http.delete(`http://127.0.0.1:80/api/answers/${answer.id}/`);
+  }
+
+
 }

@@ -11,6 +11,10 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) { }
 
+  getUser() {
+    return this.http.get('http://127.0.0.1:80/api/user/');
+  }
+
 
   loginUser(body) {
     return this.http.post('http://127.0.0.1:80/api/rest-auth/login/', body);
@@ -24,8 +28,8 @@ export class AuthService {
   }
 
   logout() {
-
-      this.router.navigate(['']);
+      this.cookieService.delete('token');
+      this.router.navigate(['login']);
   }
 
 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HomeService} from './home.service';
 import {AuthService} from '../../auth/auth.service';
 import {Router} from '@angular/router';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,6 +17,16 @@ export class HomeComponent implements OnInit {
     }
     this.service.getQuestions().subscribe(res => {
       this.questions = res;
+    });
+    this.setUser()
+  }
+
+  setUser() {
+    this.authService.getUser().subscribe(res => {
+      // @ts-ignore
+      const user = res.username;
+      localStorage.setItem('username', user);
+
     });
   }
 

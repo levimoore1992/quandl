@@ -1,15 +1,15 @@
 <app-navbar></app-navbar>
 <mat-card>
   <mat-card-title>
-    Ask A Question
+    Edit your answer
   </mat-card-title>
   <form [formGroup]="editorForm">
     <mat-form-field appearance="fill">
       <mat-label>Question</mat-label>
-      <textarea matInput formControlName="question" required [value]="defaultQuestion"></textarea>
+      <textarea matInput formControlName="answer" required [value]="defaultAnswer"></textarea>
       <mat-error *ngIf="error">{{error}}</mat-error>
 
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="submitForm()">Publish</button>
+    <button mat-raised-button color="primary" (click)="submitForm()">Publish Answer</button>
   </form>
 </mat-card>

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QuestionService} from './question.service';
 import {Title} from '@angular/platform-browser';
 
@@ -14,19 +14,21 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class QuestionComponent implements OnInit {
   slug: string;
   question: Question;
-  answers: Answer;
+  answers: Array<Answer>;
   userHasAnswered = false;
   showForm = false;
   answerForm: FormGroup;
   error: any;
+  requestUser;
 
   constructor(private route: ActivatedRoute,
               private service: QuestionService,
               private titleService: Title,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() {
-
+            this.setRequestUser();
             this.answerForm = this.fb.group({
               answerBody: ['', Validators.required],
               });
@@ -39,19 +41,48 @@ export class QuestionComponent implements OnInit {
             this.question = res;
 
     });
-            this.service.getQuestionAnswers(this.slug).subscribe(res => {
-      this.answers = res;
+            this.service.getAnswersBySlug(this.slug).subscribe(res => {
+                // @ts-ignore
+              this.answers = res;
+    });
+  }
+
+  isQuestionAuthor() {
+        return this.question.author === this.requestUser;
+
+  }
+
+  setRequestUser() {
+    this.requestUser = localStorage.getItem('username');
+  }
+
+  deleteAnswer(answer) {
+    this.service.deleteAnswer(answer).subscribe(_ => {
+      this.answers.splice(this.answers.indexOf(answer));
+      this.userHasAnswered = false;
     });
   }
 
 
   submitForm() {
     const payload = {
-      answer: this.answerForm.get('answerBody').value
+      body: this.answerForm.get('answerBody').value
     };
 
     this.service.postAnswer(this.slug, payload).subscribe(res => {
-      console.log(res);
-    })
+      this.answers.unshift(res);
+      this.showForm = false;
+      this.userHasAnswered = true;
+    });
+  }
+
+  deleteQuestion() {
+    this.service.deleteQuestion(this.slug).subscribe(_ => {
+      this.router.navigate(['']);
+    });
+  }
+
+  editQuestion() {
+    this.router.navigate(['ask', this.slug]);
   }
 }

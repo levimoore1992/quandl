@@ -3,10 +3,11 @@ from .models import Answer, Question
 
 
 class AnswerSerializer(serializers.ModelSerializer):
-    author = serializers.StringRelatedField(read_only=True)
-    created_at = serializers.SerializerMethodField(read_only=True)
-    like_count = serializers.SerializerMethodField(read_only=True)
-    user_has_voted = serializers.SerializerMethodField(read_only=True)
+    author = serializers.StringRelatedField()
+    created_at = serializers.SerializerMethodField()
+    like_count = serializers.SerializerMethodField()
+    user_has_voted = serializers.SerializerMethodField()
+    question_slug = serializers.SerializerMethodField()
 
     class Meta:
         model = Answer
@@ -21,6 +22,9 @@ class AnswerSerializer(serializers.ModelSerializer):
     def get_user_has_voted(self, instance):
         request = self.context.get("request")
         return instance.voters.filter(pk=request.user.pk).exists()
+
+    def get_question_slug(self, instance):
+        return instance.question.slug
 
 
 class QuestionSerializer(serializers.ModelSerializer):

@@ -7,6 +7,14 @@
 .content{
   font-style: italic;
 }
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttons button{
+  margin: 10px;
+}
 
 .author{
     font-family: Cochin;

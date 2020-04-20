@@ -17,6 +17,7 @@ import { QuestionComponent } from './views/question/question.component';
 import {TokenInterceptorInterceptor} from './token-interceptor.interceptor';
 import { QuestionEditorComponent } from './views/question-editor/question-editor.component';
 import { AnswerComponent } from './views/answer/answer.component';
+import { AnswerEditorComponent } from './views/answer-editor/answer-editor.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AnswerComponent } from './views/answer/answer.component';
     HomeComponent,
     QuestionComponent,
     QuestionEditorComponent,
-    AnswerComponent
+    AnswerComponent,
+    AnswerEditorComponent
   ],
   imports: [
     BrowserModule,
