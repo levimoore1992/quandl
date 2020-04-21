@@ -18,6 +18,7 @@ import {TokenInterceptorInterceptor} from './token-interceptor.interceptor';
 import { QuestionEditorComponent } from './views/question-editor/question-editor.component';
 import { AnswerComponent } from './views/answer/answer.component';
 import { AnswerEditorComponent } from './views/answer-editor/answer-editor.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AnswerEditorComponent } from './views/answer-editor/answer-editor.compo
     QuestionComponent,
     QuestionEditorComponent,
     AnswerComponent,
-    AnswerEditorComponent
+    AnswerEditorComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

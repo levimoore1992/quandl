@@ -18,8 +18,8 @@ export class QuestionService {
   }
 
     editQuestion(payload, slug) {
-    console.log(payload)
-        return this.http.put<Question>(`http://127.0.0.1:80/api/questions/${slug}/`, payload);
+    console.log(payload);
+    return this.http.put<Question>(`http://127.0.0.1:80/api/questions/${slug}/`, payload);
 
   }
 
@@ -49,6 +49,15 @@ export class QuestionService {
 
   deleteAnswer(answer) {
     return this.http.delete(`http://127.0.0.1:80/api/answers/${answer.id}/`);
+  }
+
+  likeAnswer( id) {
+    return this.http.post(`http://127.0.0.1:80/api/answers/${id}/like/`, {});
+  }
+
+  unlikeAnswer(id) {
+      return this.http.delete(`http://127.0.0.1:80/api/answers/${id}/like/`);
+
   }
 
 

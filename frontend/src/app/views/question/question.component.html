@@ -31,6 +31,6 @@
 </div>
 
 
-<div *ngFor="let answer of answers" class="answers">
+<div *ngFor="let answer of answers" class="answers-class">
   <app-answer [answer]="answer" [requestUser]="requestUser" (delete)="deleteAnswer(answer)"></app-answer>
 </div>

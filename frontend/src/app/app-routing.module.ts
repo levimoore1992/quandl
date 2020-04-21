@@ -6,6 +6,7 @@ import {HomeComponent} from './views/home/home.component';
 import {QuestionComponent} from './views/question/question.component';
 import {QuestionEditorComponent} from './views/question-editor/question-editor.component';
 import {AnswerEditorComponent} from './views/answer-editor/answer-editor.component';
+import {NotFoundComponent} from './views/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'question/:slug', component: QuestionComponent},
   {path: 'ask', component: QuestionEditorComponent, pathMatch: 'full'},
   {path: 'ask/:slug', component: QuestionEditorComponent},
-  {path: 'edit-answer/:id', component: AnswerEditorComponent}
+  {path: 'edit-answer/:id', component: AnswerEditorComponent},
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({

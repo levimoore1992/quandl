@@ -10,4 +10,7 @@
     <button mat-raised-button color="primary" [routerLink]="['/edit-answer', answer.id]">Edit</button>
     <button mat-raised-button color="warn" (click)="emitDelete()">Delete</button>
   </div>
+  <div *ngIf="!isAnswerAuthor()">
+    <button mat-raised-button [color]="this.userLikedAnswer ?'accent': 'warn' " (click)="toggleLike()">Like </button>{{likesCounter}}
+  </div>
 </div>
